@@ -1,0 +1,63 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20230208175455_InitialCreate.cs" />
+    <Compile Remove="Migrations\20230208175455_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20230208183040_CreateTesttable.cs" />
+    <Compile Remove="Migrations\20230208183040_CreateTesttable.Designer.cs" />
+    <Compile Remove="Migrations\20230208183217_CreateTesttable1.cs" />
+    <Compile Remove="Migrations\20230208183217_CreateTesttable1.Designer.cs" />
+    <Compile Remove="Migrations\20230208190308_CreateStudentTable.cs" />
+    <Compile Remove="Migrations\20230208190308_CreateStudentTable.Designer.cs" />
+    <Compile Remove="Migrations\20230208195347_tablescreation.cs" />
+    <Compile Remove="Migrations\20230208195347_tablescreation.Designer.cs" />
+    <Compile Remove="Migrations\20230208195521_tablescreation1.cs" />
+    <Compile Remove="Migrations\20230208195521_tablescreation1.Designer.cs" />
+    <Compile Remove="Migrations\20230208195814_tablescreation11.cs" />
+    <Compile Remove="Migrations\20230208195814_tablescreation11.Designer.cs" />
+    <Compile Remove="Migrations\20230208200037_tablescreations.cs" />
+    <Compile Remove="Migrations\20230208200037_tablescreations.Designer.cs" />
+    <Compile Remove="Migrations\20230208200150_tablescreations1.cs" />
+    <Compile Remove="Migrations\20230208200150_tablescreations1.Designer.cs" />
+    <Compile Remove="Migrations\20230208200408_errorfix.cs" />
+    <Compile Remove="Migrations\20230208200408_errorfix.Designer.cs" />
+    <Compile Remove="Migrations\20230208200446_errorfix1.cs" />
+    <Compile Remove="Migrations\20230208200446_errorfix1.Designer.cs" />
+    <Compile Remove="Migrations\20230208200632_errorfix11.cs" />
+    <Compile Remove="Migrations\20230208200632_errorfix11.Designer.cs" />
+    <Compile Remove="Migrations\20230208200717_errorfix111.cs" />
+    <Compile Remove="Migrations\20230208200717_errorfix111.Designer.cs" />
+    <Compile Remove="Migrations\20230208201000_errorfix1111.cs" />
+    <Compile Remove="Migrations\20230208201000_errorfix1111.Designer.cs" />
+    <Compile Remove="Migrations\20230208201430_test.cs" />
+    <Compile Remove="Migrations\20230208201430_test.Designer.cs" />
+    <Compile Remove="Migrations\20230209025620_test1.cs" />
+    <Compile Remove="Migrations\20230209025620_test1.Designer.cs" />
+    <Compile Remove="Migrations\20230209030330_TestTableIssue.cs" />
+    <Compile Remove="Migrations\20230209030330_TestTableIssue.Designer.cs" />
+    <Compile Remove="Migrations\20230209030524_TestTableIssue1.cs" />
+    <Compile Remove="Migrations\20230209030524_TestTableIssue1.Designer.cs" />
+    <Compile Remove="Migrations\ApplicationDbContextModelSnapshot.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
+</Project>
