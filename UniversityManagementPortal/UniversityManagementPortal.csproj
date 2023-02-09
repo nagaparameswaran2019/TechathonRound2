@@ -34,4 +34,8 @@
     <ProjectReference Include="..\UniversityManagementPortalEntity\UniversityManagementPortalEntity.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Student\" />
+  </ItemGroup>
+
 </Project>

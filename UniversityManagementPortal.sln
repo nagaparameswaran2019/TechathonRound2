@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityManagementPortal", "UniversityManagementPortal\UniversityManagementPortal.csproj", "{7DDB1C82-7AB1-4D07-A5B1-AE6294DA47EA}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccessLayer", "DataAccessLayer", "{DAEF9132-E18B-4123-962D-4E38DCB19697}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityManagementPortalEntity", "UniversityManagementPortalEntity\UniversityManagementPortalEntity.csproj", "{CBE36DA9-C1AD-4E00-B4D7-57612DCB3111}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversityManagementPortalEntity", "UniversityManagementPortalEntity\UniversityManagementPortalEntity.csproj", "{CBE36DA9-C1AD-4E00-B4D7-57612DCB3111}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityManagementPortalUIModel", "UniversityManagementPortalUIModel\UniversityManagementPortalUIModel.csproj", "{841CA751-07B4-41FA-9E43-1DAA70EE6F4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityManagementPortalWebApp", "UniversityManagementPortalWebApp\UniversityManagementPortalWebApp.csproj", "{63F56D5C-3505-486E-A3AE-1101FDC08E82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,14 +17,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7DDB1C82-7AB1-4D07-A5B1-AE6294DA47EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7DDB1C82-7AB1-4D07-A5B1-AE6294DA47EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7DDB1C82-7AB1-4D07-A5B1-AE6294DA47EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7DDB1C82-7AB1-4D07-A5B1-AE6294DA47EA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CBE36DA9-C1AD-4E00-B4D7-57612DCB3111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CBE36DA9-C1AD-4E00-B4D7-57612DCB3111}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBE36DA9-C1AD-4E00-B4D7-57612DCB3111}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBE36DA9-C1AD-4E00-B4D7-57612DCB3111}.Release|Any CPU.Build.0 = Release|Any CPU
+		{841CA751-07B4-41FA-9E43-1DAA70EE6F4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{841CA751-07B4-41FA-9E43-1DAA70EE6F4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{841CA751-07B4-41FA-9E43-1DAA70EE6F4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{841CA751-07B4-41FA-9E43-1DAA70EE6F4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63F56D5C-3505-486E-A3AE-1101FDC08E82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63F56D5C-3505-486E-A3AE-1101FDC08E82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63F56D5C-3505-486E-A3AE-1101FDC08E82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63F56D5C-3505-486E-A3AE-1101FDC08E82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
