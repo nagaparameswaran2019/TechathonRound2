@@ -1,6 +1,6 @@
 ﻿namespace UniversityManagementPortal.UIModel
 {
-    public class Student
+    public class StudentViewModel
     {
         
         public int StudentId { get; set; }

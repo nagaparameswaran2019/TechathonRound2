@@ -19,3 +19,6 @@
 /UniversityManagementPortalWebApp/obj
 /.vs/UniversityManagementPortal/FileContentIndex
 /UniversityManagementPortalUIModel/bin/Debug/net6.0
+/UniversityManagmentPortal.Repository/obj
+/UniversityManagementPortal.Service/obj
+/UniversityManagementPortal.AutoMapper/obj

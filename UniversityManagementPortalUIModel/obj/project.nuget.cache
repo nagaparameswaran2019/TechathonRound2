@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4hCqsNj5hk5ruyASc+JfJ6ZM4dU8oYRccV+iR6c7xc40CoDD6b383HrNHP+ClT8HcCEBMYdPUm1BBJnM8sJf7w==",
+  "dgSpecHash": "oEPJtDwBY8LV4LS9YtOut/piXJwOlmvTkn858gwm21nRJtefsm/EINAsIzVQ7wusTBgI4UkOR3YtmpCEmIr5gw==",
   "success": true,
-  "projectFilePath": "C:\\Techathon\\UniversityManagementPortal\\UniversityManagementPortalUIModel\\UniversityManagementPortalUIModel.csproj",
+  "projectFilePath": "C:\\Techathon\\UniversityManagementPortal\\UniversityManagementPortalUIModel\\UniversityManagementPortal.UIModel.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

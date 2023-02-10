@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Techathon\\UniversityManagementPortal\\UniversityManagementPortalUIModel\\UniversityManagementPortalUIModel.csproj",
-      "projectName": "UniversityManagementPortalUIModel",
-      "projectPath": "C:\\Techathon\\UniversityManagementPortal\\UniversityManagementPortalUIModel\\UniversityManagementPortalUIModel.csproj",
+      "projectUniqueName": "C:\\Techathon\\UniversityManagementPortal\\UniversityManagementPortalUIModel\\UniversityManagementPortal.UIModel.csproj",
+      "projectName": "UniversityManagementPortal.UIModel",
+      "projectPath": "C:\\Techathon\\UniversityManagementPortal\\UniversityManagementPortalUIModel\\UniversityManagementPortal.UIModel.csproj",
       "packagesPath": "C:\\Users\\Nagaparameswaran.J\\.nuget\\packages\\",
       "outputPath": "C:\\Techathon\\UniversityManagementPortal\\UniversityManagementPortalUIModel\\obj\\",
       "projectStyle": "PackageReference",
