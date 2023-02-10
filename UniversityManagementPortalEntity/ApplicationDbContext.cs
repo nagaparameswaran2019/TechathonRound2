@@ -24,5 +24,7 @@ namespace UniversityManagementPortalEntity
 
         DbSet<LookUp> LookUp { get; set; }
         DbSet<LookUpGroup> LookUpGroups { get; set; }
+
+        DbSet<StaffProfile> StaffProfile { get; set; }  
     }
 }

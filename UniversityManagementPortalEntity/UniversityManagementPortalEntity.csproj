@@ -43,7 +43,6 @@
     <Compile Remove="Migrations\20230209030330_TestTableIssue.Designer.cs" />
     <Compile Remove="Migrations\20230209030524_TestTableIssue1.cs" />
     <Compile Remove="Migrations\20230209030524_TestTableIssue1.Designer.cs" />
-    <Compile Remove="Migrations\ApplicationDbContextModelSnapshot.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,10 +53,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>
