@@ -5,3 +5,12 @@
 /.vs/ProjectEvaluation/universitymanagementportal.projects.v2
 /.vs/UniversityPortal/v17/.suo
 /.vs/UniversityManagementPortal/FileContentIndex
+/UniversityManagementPortalWebApp/bin/Debug/net6.0
+/UniversityManagementPortalWebApp/obj/Debug/net6.0
+/UniversityManagementPortalWebApp/obj
+/UniversityMgmtUtil/bin/Debug/net6.0
+/UniversityMgmtUtil/obj/Debug/net6.0
+/UniversityMgmtUtil/obj/Release/net6.0
+/UniversityMgmtUtil/obj
+/UniversityManagementPortalUIModel/obj
+/UniversityManagementPortalUIModel/bin/Debug/net6.0

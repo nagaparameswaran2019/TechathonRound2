@@ -1,0 +1,129 @@
+﻿@*@page *@
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    //System.Security.Claims.ClaimsPrincipal currentUser = this.User;
+    //bool isAdmin = currentUser.IsInRole("SuperAdmin");
+
+    string rolse = HttpContextAccessor.HttpContext.Session.GetString("Roles");
+
+}
+@if (rolse == "SuperAdmin")
+{
+    <aside id="sidebar" class="sidebar">
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="StudentEntrolment">
+                    <i class="bi bi-grid"></i>
+                    <span>Student Entrolment</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
+                    <i class="bi bi-grid"></i>
+                    <span>Document Center </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
+                    <i class="bi bi-grid"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
+                    <i class="bi bi-grid"></i>
+                    <span>Exam</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
+                    <i class="bi bi-grid"></i>
+                    <span>Publish Results</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
+                    <i class="bi bi-grid"></i>
+                    <span>Generate Mark Sheets </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
+                    <i class="bi bi-grid"></i>
+                    <span>Generate Degree/Certificates </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="components-alerts.html">
+                            <i class="bi bi-circle"></i><span>Alerts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components-accordion.html">
+                            <i class="bi bi-circle"></i><span>Accordion</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components-badges.html">
+                            <i class="bi bi-circle"></i><span>Badges</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components-breadcrumbs.html">
+                            <i class="bi bi-circle"></i><span>Breadcrumbs</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End Components Nav -->
+        </ul>
+    </aside>
+}
+else if (rolse == "Student")
+{
+    <aside id="sidebar" class="sidebar">
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="StudentEntrolment">
+                    <i class="bi bi-grid"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
+                    <i class="bi bi-grid"></i>
+                    <span>Upload Documents</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
+                    <i class="bi bi-grid"></i>
+                    <span>Exam</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
+                    <i class="bi bi-grid"></i>
+                    <span>View Results</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
+                    <i class="bi bi-grid"></i>
+                    <span>View Mark Sheets </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
+                    <i class="bi bi-grid"></i>
+                    <span>View Degree/Certificates </span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+}
