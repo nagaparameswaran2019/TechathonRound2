@@ -19,6 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Shared\MvcGrid\_Grid.cshtml" />
+    <None Include="Views\Shared\MvcGrid\_Pager.cshtml" />
     <None Include="wwwroot\img\not-found.svg" />
     <None Include="wwwroot\lib\bootstrap-icons\fonts\bootstrap-icons.woff2" />
   </ItemGroup>
@@ -34,9 +36,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.11" />
+    <PackageReference Include="NonFactors.Grid.Mvc6" Version="6.2.4" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\UniversityManagementPortal.AutoMapper\UniversityManagementPortal.Mapper.csproj" />
     <ProjectReference Include="..\UniversityManagementPortal.Service\UniversityManagementPortal.Service.csproj" />
     <ProjectReference Include="..\UniversityManagementPortalEntity\UniversityManagementPortalEntity.csproj" />
     <ProjectReference Include="..\UniversityManagementPortalUIModel\UniversityManagementPortal.UIModel.csproj" />

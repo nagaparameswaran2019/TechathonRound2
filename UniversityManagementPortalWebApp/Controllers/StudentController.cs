@@ -29,7 +29,8 @@ namespace UniversityManagementPortal.WebApp.Controllers
         // GET: Student
         public ActionResult Index()
         {
-            return View();
+           List<StudentViewModel> result = _studentService.GetAllStudents();
+            return View(result);
         }
 
         // GET: Student/Details/5

@@ -20,42 +20,34 @@ namespace UniversityManagementPortalEntity.Model
         public string EmailId { get; set; }
         public int ContactNo1 { get; set; }
         public int AltContactNo2 { get; set; }
-        public DateTime AcadamicStartDate { get; set; }
-        public DateTime AcadamicEndDate { get; set; }
-        public int Sex { get; set; }
+        public DateTime? AcadamicStartDate { get; set; }
+        public DateTime? AcadamicEndDate { get; set; }
+        [StringLength(50)]
+        public string Sex { get; set; }
+
         [StringLength(250)]
-        public string FatherName { get; set; }
+        public string? FatherName { get; set; }
+
         [StringLength(250)]
-        public string MotherName { get; set; }
+        public string? MotherName { get; set; }
+
         [StringLength(20)]
         public string AdharNo { get; set; }
         [StringLength(250)]
-        public string Photo { get; set; }
+        public string? Photo { get; set; }
         [StringLength(20)]
-        public string BloodGroup { get; set; }
+        public string? BloodGroup { get; set; }
 
         [ForeignKey("AspNetUsers")]
         [StringLength(900)]
-        public string AspNetUsersId { get; set; }
-
+        public string? AspNetUsersId { get; set; }
         //[ForeignKey("Address")]
-        public int AddressId { get; set; }
+        public int? AddressId { get; set; }
         //public virtual IdentityUser ApplicationUser { get; set; }
         //public virtual AddressMaster Address { get; set; }
-        public int CreatedBy { get; set; }
-
-        private DateTime? _createdOn = null;
-        public DateTime CreatedOn
-        {
-            get
-            {
-                return this._createdOn.HasValue
-                   ? this._createdOn.Value
-                   : DateTime.Now;
-            }
-            set { this._createdOn = value; }
-        }
-        public int ModifiedBy { get; set; }
-        public DateTime ModifiedOn { get; set; }
+        public int? CreatedBy { get; set; }
+        public DateTime? CreatedOn { get; set; }
+        public int? ModifiedBy { get; set; }
+        public DateTime? ModifiedOn { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using UniversityManagementPortal.Mapper;
 using UniversityManagementPortal.Service.Interface;
 using UniversityManagementPortal.Service.Service;
 using UniversityManagementPortalEntity;
@@ -30,6 +31,11 @@ builder.Services.AddSession(options =>
 
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<IStudentService, StudentService>();
+
+AutoMapper.Mapper.Initialize(mc =>
+{
+    mc.AddProfile(new AutoMapperConfig());
+});
 
 var app = builder.Build();
 

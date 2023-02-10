@@ -1,0 +1,29 @@
+﻿@model IEnumerable<UniversityManagementPortal.UIModel.StudentViewModel>
+@addTagHelper*, Microsoft.AspNetCore.Mvc.TagHelpers
+@using NonFactors.Mvc.Grid;
+@{
+    Layout = "_Layout";
+}
+@{
+    ViewData["Title"] = "Student List";
+}
+
+<!DOCTYPE html>
+ 
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet" />
+</head>
+<body>
+    @(Html.Grid(Model).Build(columns =>
+        {
+            columns.Add(model => model.FirstName).Titled("First Name");
+            columns.Add(model => model.LastName).Titled("LastName");
+            columns.Add(model => model.EmailId).Titled("Email ID");
+            columns.Add(model => model.ContactNo1).Titled("Contact No");
+        })
+    )
+</body>
+</html>
