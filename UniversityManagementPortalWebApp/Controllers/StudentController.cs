@@ -1,14 +1,31 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UniversityManagementPortal.Service.Interface;
+using UniversityManagementPortal.UIModel;
 
 namespace UniversityManagementPortal.WebApp.Controllers
 {
     public class StudentController : Controller
     {
+        private readonly IStudentService _studentService;
+        public StudentController(IStudentService studentService)
+        {
+            _studentService = studentService;
+        }
 
-        public ActionResult StudentEntrolment() {
+        public ActionResult StudentEntrolment()
+        {
+            //_studentService.AddOrUpdateStudentDetails(new StudentViewModel());
             return View();
         }
+
+        [HttpPost]
+        public ActionResult StudentEntrolment(StudentViewModel studentViewModel)
+        {
+            _studentService.AddOrUpdateStudentDetails(studentViewModel);
+            return View(studentViewModel);
+        }
+
         // GET: Student
         public ActionResult Index()
         {

@@ -7,8 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\UniversityManagementPortal.AutoMapper\UniversityManagementPortal.Mapper.csproj" />
     <ProjectReference Include="..\UniversityManagementPortalEntity\UniversityManagementPortalEntity.csproj" />
     <ProjectReference Include="..\UniversityManagementPortalUIModel\UniversityManagementPortal.UIModel.csproj" />
+    <ProjectReference Include="..\UniversityManagmentPortal.Repository\UniversityManagmentPortal.Repository.csproj" />
   </ItemGroup>
 
 </Project>

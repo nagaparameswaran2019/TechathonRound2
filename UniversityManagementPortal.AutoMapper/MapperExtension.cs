@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 
-namespace UniversityManagementPortal.AutoMapper.Mapper
+namespace UniversityManagementPortal.Mapper
 {
     public static class MapperExtension
     {
@@ -32,7 +32,7 @@ namespace UniversityManagementPortal.AutoMapper.Mapper
             try
             {
                 //var mapper = cfg.CreateMapper();
-                 return AutoMapper.Mapper.Map<T>(obj);
+                return AutoMapper.Mapper.Map<T>(obj);
             }
             catch (Exception ex)
             {

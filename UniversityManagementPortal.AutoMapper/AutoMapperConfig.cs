@@ -2,7 +2,7 @@
 using UniversityManagementPortal.UIModel;
 using UniversityManagementPortalEntity.Model;
 
-namespace UniversityManagementPortal.AutoMapper.Mapper
+namespace UniversityManagementPortal.Mapper
 {
     public class AutoMapperConfig : Profile
     {

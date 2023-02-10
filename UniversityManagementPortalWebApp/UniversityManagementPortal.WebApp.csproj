@@ -37,6 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\UniversityManagementPortal.Service\UniversityManagementPortal.Service.csproj" />
     <ProjectReference Include="..\UniversityManagementPortalEntity\UniversityManagementPortalEntity.csproj" />
     <ProjectReference Include="..\UniversityManagementPortalUIModel\UniversityManagementPortal.UIModel.csproj" />
     <ProjectReference Include="..\UniversityMgmtUtil\UniversityMgmtUtil.csproj" />

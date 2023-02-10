@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityManagmentPortal.R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityManagementPortal.Service", "UniversityManagementPortal.Service\UniversityManagementPortal.Service.csproj", "{D00327FB-4C19-4FC8-AE74-F6FC291CE42D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityManagementPortal.AutoMapper", "UniversityManagementPortal.AutoMapper\UniversityManagementPortal.AutoMapper.csproj", "{83D6D889-89AE-41A2-B99E-344DA2D92C55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityManagementPortal.Mapper", "UniversityManagementPortal.AutoMapper\UniversityManagementPortal.Mapper.csproj", "{83D6D889-89AE-41A2-B99E-344DA2D92C55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
