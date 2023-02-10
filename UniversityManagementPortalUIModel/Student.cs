@@ -1,4 +1,4 @@
-﻿namespace UniversityManagementPortalUIModel
+﻿namespace UniversityManagementPortal.UIModel
 {
     public class Student
     {

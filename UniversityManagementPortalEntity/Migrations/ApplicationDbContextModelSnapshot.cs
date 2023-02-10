@@ -224,99 +224,6 @@ namespace UniversityManagementPortalEntity.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("UniversityManagementPortalEntity.Model.Address", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<string>("AddrLine1")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("AddrLine2")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<int>("Zip")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Address");
-                });
-
-            modelBuilder.Entity("UniversityManagementPortalEntity.Model.ApplicationUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ApplicationUser");
-                });
-
             modelBuilder.Entity("UniversityManagementPortalEntity.Model.CertificationVerification", b =>
                 {
                     b.Property<string>("Id")
@@ -446,6 +353,51 @@ namespace UniversityManagementPortalEntity.Migrations
                     b.ToTable("Exam");
                 });
 
+            modelBuilder.Entity("UniversityManagementPortalEntity.Model.LookUp", b =>
+                {
+                    b.Property<int>("LookUpId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LookUpId"), 1L, 1);
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LookUpGroupId")
+                        .HasColumnType("int");
+
+                    b.HasKey("LookUpId");
+
+                    b.HasIndex("LookUpGroupId");
+
+                    b.ToTable("LookUp");
+                });
+
+            modelBuilder.Entity("UniversityManagementPortalEntity.Model.LookUpGroup", b =>
+                {
+                    b.Property<int>("LookUpGroupId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LookUpGroupId"), 1L, 1);
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("LookUpGroupId");
+
+                    b.ToTable("LookUpGroups");
+                });
+
             modelBuilder.Entity("UniversityManagementPortalEntity.Model.Registration", b =>
                 {
                     b.Property<int>("Id")
@@ -550,9 +502,6 @@ namespace UniversityManagementPortalEntity.Migrations
                     b.Property<int>("AltContactNo2")
                         .HasColumnType("int");
 
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("AspNetUsersId")
                         .IsRequired()
                         .HasMaxLength(900)
@@ -620,10 +569,6 @@ namespace UniversityManagementPortalEntity.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("StudentId");
-
-                    b.HasIndex("AddressId");
-
-                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Students");
                 });
@@ -717,9 +662,6 @@ namespace UniversityManagementPortalEntity.Migrations
                     b.Property<int>("AddressId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("AspNetUsersId")
                         .IsRequired()
                         .HasMaxLength(900)
@@ -757,10 +699,6 @@ namespace UniversityManagementPortalEntity.Migrations
                         .HasColumnType("nvarchar(250)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AddressId");
-
-                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("University");
                 });
@@ -838,21 +776,13 @@ namespace UniversityManagementPortalEntity.Migrations
                     b.Navigation("Subject");
                 });
 
-            modelBuilder.Entity("UniversityManagementPortalEntity.Model.Student", b =>
+            modelBuilder.Entity("UniversityManagementPortalEntity.Model.LookUp", b =>
                 {
-                    b.HasOne("UniversityManagementPortalEntity.Model.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId")
+                    b.HasOne("UniversityManagementPortalEntity.Model.LookUpGroup", null)
+                        .WithMany("LookUps")
+                        .HasForeignKey("LookUpGroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("UniversityManagementPortalEntity.Model.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId");
-
-                    b.Navigation("Address");
-
-                    b.Navigation("ApplicationUser");
                 });
 
             modelBuilder.Entity("UniversityManagementPortalEntity.Model.StudentFee", b =>
@@ -866,21 +796,9 @@ namespace UniversityManagementPortalEntity.Migrations
                     b.Navigation("Student");
                 });
 
-            modelBuilder.Entity("UniversityManagementPortalEntity.Model.University", b =>
+            modelBuilder.Entity("UniversityManagementPortalEntity.Model.LookUpGroup", b =>
                 {
-                    b.HasOne("UniversityManagementPortalEntity.Model.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("UniversityManagementPortalEntity.Model.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId");
-
-                    b.Navigation("Address");
-
-                    b.Navigation("ApplicationUser");
+                    b.Navigation("LookUps");
                 });
 #pragma warning restore 612, 618
         }

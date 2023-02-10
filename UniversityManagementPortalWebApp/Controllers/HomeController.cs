@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using UniversityManagementPortalWebApp.Models;
+using UniversityManagementPortal.WebApp.Controllers;
+using UniversityManagementPortal.WebApp.Models;
 
 namespace UniversityManagementPortalWebApp.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
 
@@ -15,6 +17,13 @@ namespace UniversityManagementPortalWebApp.Controllers
 
         public IActionResult Index()
         {
+            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
+            if (currentUser != null)
+            {
+                bool isAdmin = currentUser.IsInRole("SuperAdmin");
+            }
+
+            //var id = _userManager.GetUserId(User); // Get user id:
             return View();
         }
 

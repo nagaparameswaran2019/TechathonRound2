@@ -19,7 +19,10 @@ namespace UniversityManagementPortalEntity
         DbSet<StudentFee> StudentFee { get; set; }
         DbSet<Subject> Subject { get; set; }
         DbSet<CertificationVerification> CertificationVerification { get; set; }
-        DbSet<Address> Address { get; set; }
+        //DbSet<AddressMaster> AddressMaster { get; set; }
         DbSet<Exam> Exam { get; set; }
+
+        DbSet<LookUp> LookUp { get; set; }
+        DbSet<LookUpGroup> LookUpGroups { get; set; }
     }
 }

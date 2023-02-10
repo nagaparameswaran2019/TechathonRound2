@@ -1,4 +1,4 @@
-namespace UniversityManagementPortalWebApp.Models
+namespace UniversityManagementPortal.WebApp.Models
 {
     public class ErrorViewModel
     {

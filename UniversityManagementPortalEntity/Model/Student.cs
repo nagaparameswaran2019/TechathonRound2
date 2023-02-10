@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UniversityManagementPortalEntity.Model
@@ -37,10 +38,10 @@ namespace UniversityManagementPortalEntity.Model
         [StringLength(900)]
         public string AspNetUsersId { get; set; }
 
-        [ForeignKey("Address")]
+        //[ForeignKey("Address")]
         public int AddressId { get; set; }
-        public virtual ApplicationUser ApplicationUser { get; set; }
-        public virtual Address Address { get; set; }
+        //public virtual IdentityUser ApplicationUser { get; set; }
+        //public virtual AddressMaster Address { get; set; }
         public int CreatedBy { get; set; }
 
         private DateTime? _createdOn = null;
