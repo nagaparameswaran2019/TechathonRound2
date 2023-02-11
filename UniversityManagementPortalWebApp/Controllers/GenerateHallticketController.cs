@@ -1,65 +1,29 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using UniversityManagementPortal.Service.Interface;
-using UniversityManagementPortal.UIModel;
 
 namespace UniversityManagementPortal.WebApp.Controllers
 {
-    public class StudentController : Controller
+    public class GenerateHallticketController : Controller
     {
-        private readonly IStudentService _studentService;
-        public StudentController(IStudentService studentService)
+        // GET: GenerateHallticketController
+        public ActionResult Index()
         {
-            _studentService = studentService;
-        }
-
-        public ActionResult StudentEntrolment()
-        {
-            //_studentService.AddOrUpdateStudentDetails(new StudentViewModel());
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> StudentEntrolment(StudentViewModel studentViewModel)
-        {
-            try
-            {
-
-                var result = await _studentService.AddOrUpdateStudentDetails(studentViewModel);
-
-                if (!result.IsSuccess)
-                {
-                    ModelState.AddModelError("Error", result.Message);
-                }
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("Error", ex.Message);
-            }
-            return View(studentViewModel);
-        }
-
-        // GET: Student
-        public ActionResult Index()
-        {
-            List<StudentViewModel> result = _studentService.GetAllStudents();
-            return View(result);
-        }
-
-        // GET: Student/Details/5
+        // GET: GenerateHallticketController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Student/Create
+        // GET: GenerateHallticketController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Student/Create
+        // POST: GenerateHallticketController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -74,13 +38,13 @@ namespace UniversityManagementPortal.WebApp.Controllers
             }
         }
 
-        // GET: Student/Edit/5
+        // GET: GenerateHallticketController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Student/Edit/5
+        // POST: GenerateHallticketController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -95,13 +59,13 @@ namespace UniversityManagementPortal.WebApp.Controllers
             }
         }
 
-        // GET: Student/Delete/5
+        // GET: GenerateHallticketController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Student/Delete/5
+        // POST: GenerateHallticketController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

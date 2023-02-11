@@ -47,4 +47,8 @@
     <ProjectReference Include="..\UniversityMgmtUtil\UniversityMgmtUtil.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\GenerateHallTicket\" />
+  </ItemGroup>
+
 </Project>
