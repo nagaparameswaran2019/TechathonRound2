@@ -14,14 +14,27 @@ namespace UniversityManagementPortal.Service.Service
     public class StudentService : IStudentService
     {
         private readonly IStudentRepository _studentRepository;
-        public StudentService(IStudentRepository studentRepository)
+        private readonly IUserManagerService _userManagerService;
+        public StudentService(IStudentRepository studentRepository, IUserManagerService userManagerService)
         {
             _studentRepository = studentRepository;
+            _userManagerService = userManagerService;
         }
-        public void AddOrUpdateStudentDetails(StudentViewModel student)
+        public async Task<Result<StudentViewModel>> AddOrUpdateStudentDetails(StudentViewModel student)
         {
             var model = student.CopyTo<Student>();
-            _studentRepository.AddOrUpdateStudentDetails(model);
+            model.MiddleName = "T";
+            var user = await _userManagerService.CreateIndentityUser(student, "Sudent");
+            if (!user.IsSuccess)
+            {
+                return user;
+            }
+            else
+            {
+                model.AspNetUsersId = user.Data.AspNetUsersId;
+                _studentRepository.AddOrUpdateStudentDetails(model);
+            }
+            return new Result<StudentViewModel>("Student Added successfully", student, true);
         }
 
         public List<StudentViewModel> GetAllStudents()

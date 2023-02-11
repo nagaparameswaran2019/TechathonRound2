@@ -10,7 +10,7 @@ namespace UniversityManagementPortal.Service.Interface
 {
     public interface IStudentService
     {
-        void AddOrUpdateStudentDetails(StudentViewModel student);
+        Task<Result<StudentViewModel>> AddOrUpdateStudentDetails(StudentViewModel student);
         StudentViewModel GetStudentDetailsById(int id);
         List<StudentViewModel> GetAllStudents();
     }

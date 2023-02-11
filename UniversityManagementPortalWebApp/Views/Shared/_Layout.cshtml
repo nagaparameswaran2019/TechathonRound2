@@ -75,7 +75,7 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <partial name="_SidebarNavPartial" />
-        <aside id="sidebar" class="sidebar">
+       @* <aside id="sidebar" class="sidebar">
             <ul class="sidebar-nav" id="sidebar-nav">
                 <li class="nav-item">
                     <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Index">
@@ -153,7 +153,7 @@
                     </ul>
                 </li><!-- End Components Nav -->
             </ul>
-        </aside>
+        </aside>*@
     }
     <div id="main" class="row main">
         <div class="col-md-12">

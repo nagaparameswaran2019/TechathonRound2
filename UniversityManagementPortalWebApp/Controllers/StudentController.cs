@@ -20,16 +20,29 @@ namespace UniversityManagementPortal.WebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult StudentEntrolment(StudentViewModel studentViewModel)
+        public async Task<ActionResult> StudentEntrolment(StudentViewModel studentViewModel)
         {
-            _studentService.AddOrUpdateStudentDetails(studentViewModel);
+            try
+            {
+
+                var result = await _studentService.AddOrUpdateStudentDetails(studentViewModel);
+
+                if (!result.IsSuccess)
+                {
+                    ModelState.AddModelError("Error", result.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Error", ex.Message);
+            }
             return View(studentViewModel);
         }
 
         // GET: Student
         public ActionResult Index()
         {
-           List<StudentViewModel> result = _studentService.GetAllStudents();
+            List<StudentViewModel> result = _studentService.GetAllStudents();
             return View(result);
         }
 
