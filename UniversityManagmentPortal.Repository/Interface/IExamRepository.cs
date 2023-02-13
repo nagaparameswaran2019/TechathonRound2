@@ -6,6 +6,6 @@ namespace UniversityManagmentPortal.Repository.Interface
     public interface IExamRepository
     {
         List<Exam> GetAllExma(string programCode, string semeseterCode, string yearCode);
-        void AddOrUpdateExam(Exam exam);
+        void AddOrUpdateExam(List<Exam> exam);
     }
 }

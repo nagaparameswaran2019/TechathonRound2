@@ -90,6 +90,7 @@
                     if (operation !== "read" && options.models) {
                         debugger
                         console.log(options);
+                        var academicYear = $('#AcademicYear').val();
                         var dataModel = [];
                         options.models.forEach(function (s) {
                             dataModel.push({
@@ -104,13 +105,14 @@
                                 Subject: s.subject,
                                 SubjectCode: s.subjectCode,
                                 Year: s.year,
-                                YearCode: s.yearCode
+                                YearCode: s.yearCode,
+                                AcademicYear: academicYear
                             });
                         })
                     }
                     return { models: kendo.stringify(dataModel) };
                 }
-            }, 
+            },
             batch: true,
             pageSize: 20,
             schema: {

@@ -42,6 +42,8 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ISemesterMasterRepository, SemesterMasterRepository>();
 builder.Services.AddScoped<ISemesterMasterService, SemesterMasterService>();
+builder.Services.AddScoped<IExamRepository, ExamRepository>();
+builder.Services.AddScoped<IExamService, ExamService>();
 
 AutoMapper.Mapper.Initialize(mc =>
 {

@@ -56,7 +56,7 @@ namespace UniversityManagementPortalEntity.Model
         [StringLength(200)]
         public string UniversityCode { get; set; }
         [StringLength(100)]
-        public string Batch { get; set; }
+        public string? Batch { get; set; }
         public int? CGPA { get; set; }
         public int? SSLCMark { get; set; }
         public int? HSCMark { get; set; }

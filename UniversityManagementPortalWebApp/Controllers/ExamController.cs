@@ -13,10 +13,12 @@ namespace UniversityManagementPortal.WebApp.Controllers
     {
         private readonly ILookUpGroupService _lookUpGroupService;
         private readonly ISemesterMasterService _semesterMasterService;
-        public ExamController(ILookUpGroupService lookUpGroupService, ISemesterMasterService semesterMasterService)
+        private readonly IExamService _examService;
+        public ExamController(ILookUpGroupService lookUpGroupService, ISemesterMasterService semesterMasterService, IExamService examService)
         {
             _lookUpGroupService = lookUpGroupService;
             _semesterMasterService = semesterMasterService;
+            _examService = examService;
         }
         public IActionResult Index()
         {
@@ -65,7 +67,8 @@ namespace UniversityManagementPortal.WebApp.Controllers
         [HttpGet]
         public ActionResult AddExamDate(string models)
         {
-            var inputData = JsonSerializer.Deserialize<List<SemesterMasterViewModel>>(models);
+            var inputData = JsonSerializer.Deserialize<List<ExamViewModel>>(models);
+            _examService.AddOrUpdateExam(inputData);
             Result<List<SemesterMasterViewModel>> masterViewModels = new Result<List<SemesterMasterViewModel>>();
             try
             {

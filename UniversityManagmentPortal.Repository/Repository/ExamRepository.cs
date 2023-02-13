@@ -21,18 +21,21 @@ namespace UniversityManagmentPortal.Repository.Repository
             _dbSet = context.Set<Exam>();
         }
 
-        public void AddOrUpdateExam(Exam exam)
+        public void AddOrUpdateExam(List<Exam> exam)
         {
             try
             {
-                if (exam.Id == 0)
+                exam.ForEach(input =>
                 {
-                    _dbSet.Add(exam);
-                }
-                else
-                {
-                    _dbSet.Update(exam);
-                }
+                    if (input.Id == 0)
+                    {
+                        _dbSet.Add(input);
+                    }
+                    else
+                    {
+                        _dbSet.Update(input);
+                    }
+                });
                 _context.SaveChanges();
             }
             catch (Exception ex)

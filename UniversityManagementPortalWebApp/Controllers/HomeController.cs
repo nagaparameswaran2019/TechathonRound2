@@ -19,7 +19,7 @@ namespace UniversityManagementPortalWebApp.Controllers
         public async Task<IActionResult> Index()
         {
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
-            if (currentUser != null)
+            if (currentUser != null && this.User.Identity.Name != null)
             {
                 var user = await _userManager.FindByEmailAsync(this.User.Identity.Name);
                 var roles = await _userManager.GetRolesAsync(user);

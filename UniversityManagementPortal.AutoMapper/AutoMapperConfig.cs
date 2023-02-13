@@ -14,6 +14,7 @@ namespace UniversityManagementPortal.Mapper
             base.CreateMap<LookUp, LookUpViewModel>().ReverseMap();
             base.CreateMap<PortalUser, PortalUserViewModel>().ReverseMap();
             base.CreateMap<SemesterMaster, SemesterMasterViewModel>().ReverseMap();
+            base.CreateMap<Exam, ExamViewModel>().ReverseMap();
             base.CreateMap<PortalUser, LookUpViewModel>()
                 .ForMember(t => t.Code, opt => opt.MapFrom(src => src.AspNetUserId))
                 .ForMember(t => t.Description, opt => opt.MapFrom(src => src.DisplayName))

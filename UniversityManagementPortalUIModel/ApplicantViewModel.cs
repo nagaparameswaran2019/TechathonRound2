@@ -82,7 +82,7 @@ namespace UniversityManagementPortal.UIModel
         public string UniversityCode { get; set; }
 
         [Display(Name = "Year Studied")]
-        public string Batch { get; set; }
+        public string? Batch { get; set; }
         public int? CGPA { get; set; }
         public int? SSLCMark { get; set; }
         public int? HSCMark { get; set; }
