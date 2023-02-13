@@ -1,0 +1,210 @@
+﻿@model UniversityManagementPortal.UIModel.ExamSchduler
+@{
+    Layout = "_Layout";
+}
+@{
+    ViewData["Title"] = "Index";
+}
+
+<script src="~/js/kendo-ui/js/jquery.min.js"></script>
+<script src="~/js/kendo-ui/js/jszip.min.js"></script>
+<script src="~/js/kendo-ui/js/kendo.all.min.js"></script>
+<script type="text/javascript">
+    var programList = JSON.parse('@Json.Serialize(Model.ProgramList)');
+    var programYear = JSON.parse('@Json.Serialize(Model.ProgramYear)');
+    var semesters = JSON.parse('@Json.Serialize(Model.Semesters)');
+    $(document).ready(function () {
+        $("#ddlProgramList").kendoDropDownList({
+            filter: "contains",
+            dataTextField: "description",
+            dataValueField: "code",
+            dataSource: programList
+        });
+
+        $("#ddlProgramYear").kendoDropDownList({
+            dataTextField: "description",
+            dataValueField: "code",
+            dataSource: programYear
+        });
+
+        $("#ddlSemesters").kendoDropDownList({
+            dataTextField: "description",
+            dataValueField: "code",
+            dataSource: semesters
+        });
+    })
+
+    function onScheduleExamHanlder(e) {
+        //getSubjectsBySemester();
+        DesignSubjctGrid();
+    }
+
+    function getSubjectsBySemester() {
+        var programCode = $('#ddlProgramList').val(),
+            semeseterCode = $('#ddlSemesters').val(),
+            yearCode = $('#ddlProgramYear').val();
+        var url = "Exam/GetAllSubjectBySemester?programCode=" + programCode + "&semeseterCode=" + semeseterCode + "&yearCode=" + yearCode;
+        $.ajax(
+            {
+                type: 'GET',
+                url: url,
+                cache: false,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+
+                },
+                error: function (error) {
+                    console.log("Failed to load lock info", error);
+                }
+            });
+    }
+
+    function onProgramTypeHandler(e) {
+        //$('#ProgramCode').val(e.value);
+    }
+
+    function DesignSubjctGrid() {
+        var programCode = $('#ddlProgramList').val(),
+            semeseterCode = $('#ddlSemesters').val(),
+            yearCode = $('#ddlProgramYear').val();
+        var url = "Exam/GetAllSubjectBySemester?programCode=" + programCode + "&semeseterCode=" + semeseterCode + "&yearCode=" + yearCode;
+        dataSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: url,
+                    dataType: "json",
+                    success: function (data) {
+                        alert(data);
+                    },
+                },
+                update: {
+                    url: "Exam/AddExamDate",
+                    dataType: "json"
+                },
+                create: {
+                    url: "Exam/AddExamDate",
+                    dataType: "json"
+                },
+                parameterMap: function (options, operation) {
+                    if (operation !== "read" && options.models) {
+                        debugger
+                        console.log(options);
+                        var dataModel = [];
+                        options.models.forEach(function (s) {
+                            dataModel.push({
+                                ExamDate: s.ExamDate,
+                                ExamId: s.ExamId,
+                                ExamSession: s.ExamSession,
+                                ExamSlot: s.ExamSlot,
+                                Program: s.program,
+                                ProgramCode: s.programCode,
+                                Semeseter: s.semeseter,
+                                SemeseterCode: s.semeseterCode,
+                                Subject: s.subject,
+                                SubjectCode: s.subjectCode,
+                                Year: s.year,
+                                YearCode: s.yearCode
+                            });
+                        })
+                    }
+                    return { models: kendo.stringify(dataModel) };
+                }
+            }, 
+            batch: true,
+            pageSize: 20,
+            schema: {
+                model: {
+                    id: "ExamId",
+                    fields: {
+                        ExamId: { type: "number", editable: false, nullable: true },
+                        subjectCode: { type: "string", editable: false },
+                        subject: { type: "string", editable: false },
+                        ExamDate: { type: "date", validation: { required: true } },
+                        ExamSession: { type: "string", validation: { required: true } },
+                        ExamSessionList: { defaultValue: { Code: 'SN01', Description: 'Session - 1' } },
+                        ExamSlot: { type: "string", validation: { required: true } }
+                    }
+                }
+            }
+        });
+
+        $("#grid").kendoGrid({
+            dataSource: dataSource,
+            navigatable: true,
+            pageable: true,
+            height: 550,
+            toolbar: ["create", "save", "cancel"],
+            columns: [
+                { field: "subjectCode", title: "Subject Code", width: 80 },
+                { field: "subject", title: "Subject", width: 180 },
+                { field: "ExamDate", title: "Exam Date", width: 110, format: "{0:dd/MM/yyyy}" },
+                { field: "ExamSession", title: " Session", width: 110 },
+                //editor: examSessionDropDownEditor, template: "#=ExamSession.Description#" },
+                { field: "ExamSlot", title: " Slot", width: 120 },
+            ],
+            editable: true
+        });
+    }
+    function examSessionDropDownEditor(container, options) {
+        $('<input required data-text-field="Description" data-value-field="Code" name="' + options.field + '" data-bind="value:' + options.field + '"/>')
+            //$('<input required name="' + options.field + '"/>')
+            .appendTo(container)
+            .kendoDropDownList({
+                autoBind: false,
+                dataTextField: "Description",
+                dataValueField: "Code",
+                dataSource: [{ Code: "SN01", Description: 'Session - 1' }, { Code: "SN02", Description: 'Session - 2' }]
+            });
+    }
+
+</script>
+<h4>Schedule Exam</h4>
+<hr />
+<div class="col-md-12">
+    <form asp-action="Index">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <label asp-for="ProgramCode" class="control-label"></label>
+                            <select id="ddlProgramList" onchange="onProgramTypeHandler(this)" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <label asp-for="ProgramYear" class="control-label"></label>
+                            <select id="ddlProgramYear" onchange="onProgramTypeHandler(this)" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <label asp-for="AcademicYear" class="control-label"></label>
+                            <input asp-for="AcademicYear" autocomplete="on" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label asp-for="Semester" class="control-label"></label>
+                            <select id="ddlSemesters" onchange="onProgramTypeHandler(this)" class="form-control"></select>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-10">
+                        <div style="height:110px;">
+                            <button class="btn btn-secondary" type="button" style="margin-top:80px;" onclick="onScheduleExamHanlder(this)">Schedule Exam</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div id="grid"></div>
+        </div>
+    </form>
+</div>

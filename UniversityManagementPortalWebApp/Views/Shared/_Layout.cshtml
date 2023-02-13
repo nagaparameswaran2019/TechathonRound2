@@ -17,6 +17,11 @@
     <link rel="stylesheet" href="~/lib/bootstrap-icons/bootstrap-icons.css" />
     <link rel="stylesheet" href="~/css/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="~/css/styles/kendo.common.min.css" rel="stylesheet">
+    <link href="~/css/styles/kendo.rtl.min.css" rel="stylesheet">
+    <link href="~/css/styles/kendo.default.min.css" rel="stylesheet">
+    <link href="~/css/styles/kendo.default.mobile.min.css" rel="stylesheet">
+  
     <link rel="stylesheet" href="~/UniversityManagementPortalWebApp.styles.css" asp-append-version="true" />
 </head>
 <body>
@@ -75,93 +80,104 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <partial name="_SidebarNavPartial" />
-       @* <aside id="sidebar" class="sidebar">
-            <ul class="sidebar-nav" id="sidebar-nav">
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Index">
-                        <i class="bi bi-grid"></i>
-                        <span>Student List</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="StudentEntrolment">
-                        <i class="bi bi-grid"></i>
-                        <span>Student Entrolment</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
-                        <i class="bi bi-grid"></i>
-                        <span>Document Center </span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
-                        <i class="bi bi-grid"></i>
-                        <span>Users</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
-                        <i class="bi bi-grid"></i>
-                        <span>Exam</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
-                        <i class="bi bi-grid"></i>
-                        <span>Publish Results</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
-                        <i class="bi bi-grid"></i>
-                        <span>Generate Mark Sheets </span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
-                        <i class="bi bi-grid"></i>
-                        <span>Generate Degree/Certificates </span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                        <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
-                    </a>
-                    <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                        <li>
-                            <a href="components-alerts.html">
-                                <i class="bi bi-circle"></i><span>Alerts</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="components-accordion.html">
-                                <i class="bi bi-circle"></i><span>Accordion</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="components-badges.html">
-                                <i class="bi bi-circle"></i><span>Badges</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="components-breadcrumbs.html">
-                                <i class="bi bi-circle"></i><span>Breadcrumbs</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li><!-- End Components Nav -->
-            </ul>
-        </aside>*@
+        @* <aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+    <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Index">
+    <i class="bi bi-grid"></i>
+    <span>Student List</span>
+    </a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="StudentEntrolment">
+    <i class="bi bi-grid"></i>
+    <span>Student Entrolment</span>
+    </a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
+    <i class="bi bi-grid"></i>
+    <span>Document Center </span>
+    </a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
+    <i class="bi bi-grid"></i>
+    <span>Users</span>
+    </a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
+    <i class="bi bi-grid"></i>
+    <span>Exam</span>
+    </a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
+    <i class="bi bi-grid"></i>
+    <span>Publish Results</span>
+    </a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
+    <i class="bi bi-grid"></i>
+    <span>Generate Mark Sheets </span>
+    </a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="DocumentManager" asp-action="Documents">
+    <i class="bi bi-grid"></i>
+    <span>Generate Degree/Certificates </span>
+    </a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+    <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+    <li>
+    <a href="components-alerts.html">
+    <i class="bi bi-circle"></i><span>Alerts</span>
+    </a>
+    </li>
+    <li>
+    <a href="components-accordion.html">
+    <i class="bi bi-circle"></i><span>Accordion</span>
+    </a>
+    </li>
+    <li>
+    <a href="components-badges.html">
+    <i class="bi bi-circle"></i><span>Badges</span>
+    </a>
+    </li>
+    <li>
+    <a href="components-breadcrumbs.html">
+    <i class="bi bi-circle"></i><span>Breadcrumbs</span>
+    </a>
+    </li>
+    </ul>
+    </li><!-- End Components Nav -->
+    </ul>
+    </aside>*@
     }
-    <div id="main" class="row main">
-        <div class="col-md-12">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <div id="main" class="row main">
+            <div class="col-md-12">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="container" style="margin-top: 66px;">
             <main role="main" class="pb-3">
                 @RenderBody()
             </main>
         </div>
-    </div>
+    }
 
     <footer class="border-top footer text-muted">
         <div class="container">
@@ -171,6 +187,9 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    @*<script src="~/js/kendo-ui/js/jquery.min.js"></script>*@
+    <script src="~/js/kendo-ui/js/jszip.min.js"></script>
+    <script src="~/js/kendo-ui/js/kendo.all.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -1,3 +1,4 @@
+using CampusRecruitment.Repository.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using UniversityManagementPortal.Mapper;
@@ -33,6 +34,14 @@ builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<IUserManagerRepository, UserManagerRepository>();
 builder.Services.AddScoped<IUserManagerService, UserManagerService>();
+builder.Services.AddScoped<IApplicantRepository, ApplicantRepository>();
+builder.Services.AddScoped<ILookUpGroupRepository, LookUpGroupRepository>();
+builder.Services.AddScoped<ILookUpGroupService, LookUpGroupService>();
+builder.Services.AddScoped<ILookUpRepository, LookUpRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ISemesterMasterRepository, SemesterMasterRepository>();
+builder.Services.AddScoped<ISemesterMasterService, SemesterMasterService>();
 
 AutoMapper.Mapper.Initialize(mc =>
 {

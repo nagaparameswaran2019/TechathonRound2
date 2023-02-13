@@ -15,11 +15,20 @@ namespace UniversityManagementPortal.Service.Service
     {
         private readonly IStudentRepository _studentRepository;
         private readonly IUserManagerService _userManagerService;
-        public StudentService(IStudentRepository studentRepository, IUserManagerService userManagerService)
+        private readonly IApplicantRepository _applicantRepository;
+        public StudentService(IStudentRepository studentRepository, IUserManagerService userManagerService, IApplicantRepository applicantRepository)
         {
             _studentRepository = studentRepository;
             _userManagerService = userManagerService;
+            _applicantRepository = applicantRepository;
         }
+
+        public void AddApplicantDetails(ApplicantViewModel applicant)
+        {
+            var model = applicant.CopyTo<Applicant>();
+            _applicantRepository.AddApplicantDetails(model);
+        }
+
         public async Task<Result<StudentViewModel>> AddOrUpdateStudentDetails(StudentViewModel student)
         {
             var model = student.CopyTo<Student>();
@@ -35,6 +44,14 @@ namespace UniversityManagementPortal.Service.Service
                 _studentRepository.AddOrUpdateStudentDetails(model);
             }
             return new Result<StudentViewModel>("Student Added successfully", student, true);
+        }
+
+        public List<ApplicantViewModel> GetAllApplicantsByUniveristyId(string id)
+        {
+            List<ApplicantViewModel> applicants = new List<ApplicantViewModel>();
+            var result = _applicantRepository.GetAllApplicantsByUniveristyId(id);
+            applicants = result.CopyTo<List<ApplicantViewModel>>();
+            return applicants;
         }
 
         public List<StudentViewModel> GetAllStudents()

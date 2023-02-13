@@ -11,19 +11,17 @@ namespace UniversityManagementPortalEntity.Model
     {
         public int Id { get; set; }
         public int ExamCode { get; set; }
-        public int DepartmentType { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-
-        [ForeignKey("Subject")]
-        public int SubjectId { get; set; }
-        public int StartTime { get; set; }
-        public int EndTime { get; set; }
-        public int CreatedBy { get; set; }
-        public DateTime CreatedOn { get; set; }
-        public int ModifiedBy { get; set; }
-        public DateTime ModifiedOn { get; set; }
-        public virtual Subject Subject { get; set; }
-
+        public string ProgramCode { get; set; }
+        public string AcademicYear { get; set; }
+        public DateTime ExamDate { get; set; }
+        public string ExamSession { get; set; }
+        public string SubjectCode { get; set; }
+        public string ExamSlot { get; set; }
+        public string YearCode { get; set; }
+        public string SemeseterCode { get; set; }
+        public int CreatedBy { get; set; } = 0;
+        public DateTime CreatedOn { get; set; } = DateTime.Now;
+        public int? ModifiedBy { get; set; }
+        public DateTime? ModifiedOn { get; set; } = DateTime.Now;
     }
 }

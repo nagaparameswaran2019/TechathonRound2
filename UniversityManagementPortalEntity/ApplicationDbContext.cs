@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using UniversityManagementPortalEntity.Model;
 
@@ -25,6 +26,11 @@ namespace UniversityManagementPortalEntity
         DbSet<LookUp> LookUp { get; set; }
         DbSet<LookUpGroup> LookUpGroups { get; set; }
 
-        DbSet<StaffProfile> StaffProfile { get; set; }  
+        DbSet<StaffProfile> StaffProfile { get; set; }
+        DbSet<Applicant> Applicant { get; set; }
+        DbSet<PortalUser> PortalUser { get; set; }
+        DbSet<ApplicationUser> ApplicationUser { get; set; }
+        DbSet<ApplicationRole> ApplicationRole { get; set; }
+        DbSet<SemesterMaster> SemesterMaster { get; set; }
     }
 }

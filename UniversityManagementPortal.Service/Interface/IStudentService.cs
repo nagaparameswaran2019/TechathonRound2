@@ -13,5 +13,8 @@ namespace UniversityManagementPortal.Service.Interface
         Task<Result<StudentViewModel>> AddOrUpdateStudentDetails(StudentViewModel student);
         StudentViewModel GetStudentDetailsById(int id);
         List<StudentViewModel> GetAllStudents();
+
+        void AddApplicantDetails(ApplicantViewModel applicant);
+        List<ApplicantViewModel> GetAllApplicantsByUniveristyId(string id);
     }
 }

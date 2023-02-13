@@ -1,0 +1,93 @@
+﻿@model UniversityManagementPortal.UIModel.StudentViewModel
+
+@{
+    ViewData["Title"] = "Student Entrolment";
+}
+<script src="~/js/kendo-ui/js/jquery.min.js"></script>
+<script src="~/js/kendo-ui/js/jszip.min.js"></script>
+<script src="~/js/kendo-ui/js/kendo.all.min.js"></script>
+<h4>Student Entrolment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <div id="grid"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#grid").kendoGrid({
+            dataSource: {
+                type: "json",
+                transport: {
+                    read: "/StudentEntrollment/GetAllApplicantByUniveristyId"
+                },
+                schema: {
+                    model: {
+                        fields: {
+                            firstName: { type: "string" },
+                            lastName: { type: "string" },
+                            dob: { type: "date" },
+                            emailId: { type: "string" },
+                            contactNo1: { type: "string" },
+                            contactNo2: { type: "string" },
+                            acadamicStartDate: { type: "date" },
+                            acadamicEndDate: { type: "date" },
+                            sex: { type: "string" },
+                            adharNo: { type: "string" },
+                            bloodGroup: { type: "string" },
+                            aspNetUsersId: { type: "string" },
+                            programCode: { type: "string" },
+                            graduationCode: { type: "string" },
+                            //CGPA
+                        }
+                    }
+                },
+                pageSize: 20,
+                serverPaging: true,
+                serverFiltering: true,
+                serverSorting: true
+            },
+            height: 550,
+            filterable: true,
+            sortable: true,
+            pageable: true,
+            columns: [
+                { field: "firstName", title: "Name", width: "200px" },
+                { field: "dob", title: "DOB", format: "{0:dd/MM/yyyy}" },
+                { field: "emailId", title: "Email" ,width: "200px" },
+                { field: "contactNo1", title: "Contact No", width: "200px" },
+                { field: "acadamicStartDate", title: "Academic Year", format: "{0:dd/MM/yyyy}" },
+                { field: "acadamicEndDate", title: "Acadamic EndDate", format: "{0:dd/MM/yyyy}" },
+                { field: "sex", title: "Sex" },
+                { field: "adharNo", title: "AdharNo" },
+                { field: "programCode", title: "ProgramCode" },
+                { field: "graduationCode", title: "GraduationCode" },
+                {
+                    width:"250px",
+                    command: [
+                        {
+                            name: "Approve",
+                            click: function (e) {
+                                debugger
+                            }
+                        },
+                        {
+                            name: "Reject",
+                            click: function (e) {
+                                debugger
+                            }
+                        },
+
+                    ]
+                },
+                //{ field: "CGPA", title: "CGPA" }
+            ]
+        });
+    });
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

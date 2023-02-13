@@ -14,6 +14,7 @@ namespace UniversityManagementPortalEntity.Model
         [StringLength(500)]
         public string? Description { get; set; }
 
-        public int LookUpGroupId { get; set; } 
+        public int LookUpGroupId { get; set; }
+        public virtual LookUpGroup LookUpGroup { get; set; } = null!;
     } 
 }

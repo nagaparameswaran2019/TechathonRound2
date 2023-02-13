@@ -1,0 +1,213 @@
+﻿@model UniversityManagementPortal.UIModel.ApplicantViewModel
+@{
+    Layout = "_Layout";
+}
+@{
+    ViewData["Title"] = "Index";
+}
+<script src="~/js/kendo-ui/js/jquery.min.js"></script>
+<script src="~/js/kendo-ui/js/jszip.min.js"></script>
+<script src="~/js/kendo-ui/js/kendo.all.min.js"></script>
+<script type="text/javascript">
+    var json = '@Json.Serialize(Model.GraduationType)';
+    var pgProgramList = JSON.parse('@Json.Serialize(Model.PGProgramList)');
+    var ugProgramList = JSON.parse('@Json.Serialize(Model.UGProgramList)');
+    var universityList = JSON.parse('@Json.Serialize(Model.UniversityList)');
+    var graduationTypeDataSource = JSON.parse(json);
+
+    $(document).ready(function () {
+        $("#ddlGraduationType").kendoDropDownList({
+            dataTextField: "text",
+            dataValueField: "value",
+            dataSource: graduationTypeDataSource
+        });
+        $("#ddlProgramList").kendoDropDownList({
+            dataTextField: "description",
+            dataValueField: "code",
+            dataSource: pgProgramList
+        });
+        $("#ddlUniversityList").kendoDropDownList({
+            dataTextField: "description",
+            dataValueField: "code",
+            dataSource: universityList
+        });
+
+        $("#Dob").kendoDatePicker({
+            dateInput: true
+        });
+
+        $("#AcadamicStartDate").kendoDatePicker({
+            dateInput: true
+        });
+
+        $("#AcadamicEndDate").kendoDatePicker({
+            dateInput: true
+        });
+
+    })
+
+    function onGraduationTypeHandler(e) {
+        console.log(e.value);
+        var ddl = $("#ddlProgramList").data('kendoDropDownList');
+        $('#GraduationCode').val(e.value);
+        if (e.value == 'PG') {
+            $("#ddlProgramList").data('kendoDropDownList').setDataSource(pgProgramList);
+        }
+        else {
+            $("#ddlProgramList").data('kendoDropDownList').setDataSource(ugProgramList);
+        }
+    }
+
+    function onProgramTypeHandler(e) {
+        $('#ProgramCode').val(e.value);
+    }
+    function onUnviersityTypeHandler(e) {
+        $('#UniversityCode').val(e.value);
+    }
+</script>
+<div class="row">
+    <h4>Online Application</h4>
+    <hr />
+    <div class="col-md-12" style="border-left: 1px solid #80808026; border-right: 1px solid #80808026; ">
+        <form asp-action="Index">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="control-label"></label>
+                        <input asp-for="FirstName" autocomplete="on" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName" class="control-label"></label>
+                        <input asp-for="LastName" autocomplete="on" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MiddleName" class="control-label"></label>
+                        <input asp-for="MiddleName" autocomplete="on" class="form-control" />
+                        <span asp-validation-for="MiddleName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Dob" class="control-label"></label>
+                        <input asp-for="Dob" autocomplete="on" class="form-control" />
+                        <span asp-validation-for="Dob" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EmailId" class="control-label"></label>
+                        <input asp-for="EmailId" autocomplete="on" class="form-control" />
+                        <span asp-validation-for="EmailId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ContactNo1" class="control-label"></label>
+                        <input asp-for="ContactNo1" autocomplete="on" class="form-control" />
+                        <span asp-validation-for="ContactNo1" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ContactNo2" class="control-label"></label>
+                        <input asp-for="ContactNo2" autocomplete="on" class="form-control" />
+                        <span asp-validation-for="ContactNo2" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AcadamicStartDate" class="control-label"></label>
+                        <input asp-for="AcadamicStartDate" class="form-control" />
+                        <span asp-validation-for="AcadamicStartDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AcadamicEndDate" class="control-label"></label>
+                        <input asp-for="AcadamicEndDate" autocomplete="on" class="form-control" />
+                        <span asp-validation-for="AcadamicEndDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Sex" class="control-label"></label>
+                        <input asp-for="Sex" autocomplete="on" class="form-control" />
+                        <span asp-validation-for="Sex" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FatherName" class="control-label"></label>
+                        <input asp-for="FatherName" autocomplete="on" class="form-control" />
+                        <span asp-validation-for="FatherName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MotherName" class="control-label"></label>
+                        <input asp-for="MotherName" autocomplete="on" class="form-control" />
+                        <span asp-validation-for="MotherName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="AdharNo" class="control-label"></label>
+                        <input asp-for="AdharNo" autocomplete="on" class="form-control" />
+                        <span asp-validation-for="AdharNo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BloodGroup" class="control-label"></label>
+                        <input asp-for="BloodGroup" autocomplete="on" autocomplete="on" class="form-control" />
+                        <span asp-validation-for="BloodGroup" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="AspNetUsersId" type="hidden" class="form-control" />
+                        <span asp-validation-for="AspNetUsersId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AddressLine1" class="control-label"></label>
+                        <input asp-for="AddressLine1" autocomplete="on" class="form-control" />
+                        <span asp-validation-for="AddressLine1" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AddressLine2" class="control-label"></label>
+                        <input asp-for="AddressLine2" autocomplete="on" class="form-control" />
+                        <span asp-validation-for="AddressLine2" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="City" class="control-label"></label>
+                        <input asp-for="City" autocomplete="on" class="form-control" />
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="State" class="control-label"></label>
+                        <input asp-for="State" autocomplete="on" class="form-control" />
+                        <span asp-validation-for="State" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Country" class="control-label"></label>
+                        <input asp-for="Country" autocomplete="on" class="form-control" />
+                        <span asp-validation-for="Country" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ZipCode" class="control-label"></label>
+                        <input asp-for="ZipCode" autocomplete="on" class="form-control" />
+
+                        <span asp-validation-for="ZipCode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="GraduationCode" type="hidden" data-val="false" />
+                        <label asp-for="GraduationCode" class="control-label"></label>
+                        <select id="ddlGraduationType" onchange="onGraduationTypeHandler(this)"   class="form-control"></select>
+                    </div>
+
+                    <div class="form-group">
+                        <input asp-for="ProgramCode" type="hidden" data-val="false" />
+                        <label asp-for="ProgramCode" class="control-label"></label>
+                        <select id="ddlProgramList" onchange="onProgramTypeHandler(this)"  class="form-control"></select>
+                    </div>
+
+                    <div class="form-group">
+                        <input asp-for="UniversityCode" type="hidden" data-val="false" />
+                        <label asp-for="UniversityList" class="control-label" ></label>
+                        <select id="ddlUniversityList" onchange="onUnviersityTypeHandler(this)" class="form-control"></select>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

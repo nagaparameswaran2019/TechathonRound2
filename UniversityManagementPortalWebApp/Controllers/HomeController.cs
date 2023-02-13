@@ -9,17 +9,21 @@ namespace UniversityManagementPortalWebApp.Controllers
     public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly UserManager<IdentityUser> _userManager;
+        public HomeController(ILogger<HomeController> logger, UserManager<IdentityUser> userManager)
         {
             _logger = logger;
+            _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
             if (currentUser != null)
             {
+                var user = await _userManager.FindByEmailAsync(this.User.Identity.Name);
+                var roles = await _userManager.GetRolesAsync(user);
+                HttpContext.Session.SetString("Roles", string.Join(",", roles));
                 bool isAdmin = currentUser.IsInRole("SuperAdmin");
             }
 

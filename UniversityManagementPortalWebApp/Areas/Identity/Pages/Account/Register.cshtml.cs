@@ -19,6 +19,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using UniversityManagementPortal.Service.Interface;
+using UniversityManagementPortal.Service.Service;
 
 namespace UniversityManagementPortalWebApp.Areas.Identity.Pages.Account
 {
@@ -31,13 +33,15 @@ namespace UniversityManagementPortalWebApp.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly IServiceProvider _serviceProvider;
+        private readonly IUserService _userService;
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
              IServiceProvider serviceProvider,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IUserService userService)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -46,6 +50,8 @@ namespace UniversityManagementPortalWebApp.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
             _serviceProvider = serviceProvider;
+            _userService = userService;
+
         }
 
         /// <summary>
@@ -73,6 +79,14 @@ namespace UniversityManagementPortalWebApp.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
+            [Required]
+            [Display(Name = "University Name")]
+            public string UniversityName { get; set; }
+
+            [Required]
+            [Display(Name = "Website")]
+            public string Website { get; set; }
+
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -116,7 +130,7 @@ namespace UniversityManagementPortalWebApp.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
-                
+
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
@@ -125,11 +139,12 @@ namespace UniversityManagementPortalWebApp.Areas.Identity.Pages.Account
                 {
                     //var roleManager = _serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-                    var resultRole = await  _userManager.AddToRoleAsync(user, "SUPERADMIN");
+                    var resultRole = await _userManager.AddToRoleAsync(user, "SUPERADMIN");
 
                     _logger.LogInformation("User created a new account with password.");
-                    
-                     var userId = await _userManager.GetUserIdAsync(user);
+
+                    var userId = await _userManager.GetUserIdAsync(user);
+                    _userService.AddOrUpdateUserDetails(userId, Input.UniversityName, Input.Website, "100" /*Admin*/);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(
